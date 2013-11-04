@@ -211,7 +211,7 @@ public class MatrixGenerateUI extends javax.swing.JFrame {
 
         outputRankButtonGroup.add(PeaudoRankRadioButton);
         PeaudoRankRadioButton.setSelected(true);
-        PeaudoRankRadioButton.setText("Peudo Rank");
+        PeaudoRankRadioButton.setText("Peudo Root");
         PeaudoRankRadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PeaudoRankRadioButtonActionPerformed(evt);

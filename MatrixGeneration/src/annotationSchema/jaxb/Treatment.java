@@ -185,7 +185,9 @@ public class Treatment {
     @XmlElement(name = "synonym_of_variety_name")
     protected String synonymOfVarietyName;
     @XmlElement(required = true)
-    protected Description description;
+ //   protected Description description;    //by Jing Liu Nov. 4, 2013  deal with multiple descriptions
+    protected List<Description> description; //by Jing Liu Nov. 4, 2013  deal with multiple descriptions
+    
     @XmlElement(name = "number_of_infrataxa")
     protected String numberOfInfrataxa;
     @XmlElement(name = "flowering_time")
@@ -781,10 +783,19 @@ public class Treatment {
      *     {@link Description }
      *     
      */
-    public Description getDescription() {
+/*    public Description getDescription() {   //by Jing Liu Nov. 4, 2013  deal with multiple descriptions
         return description;
-    }
+    }*/
 
+    
+    public List<Description> getDescription() {    //by Jing Liu Nov. 4, 2013  deal with multiple descriptions
+        if (description == null) {
+        	description = new ArrayList<Description>();
+        }
+        return this.description;
+    }
+    
+    
     /**
      * Sets the value of the description property.
      * 
@@ -793,9 +804,9 @@ public class Treatment {
      *     {@link Description }
      *     
      */
-    public void setDescription(Description value) {
+  /*  public void setDescription(Description value) {
         this.description = value;
-    }
+    }*/
 
     /**
      * Gets the value of the numberOfInfrataxa property.

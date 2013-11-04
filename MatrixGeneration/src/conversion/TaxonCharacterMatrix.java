@@ -199,6 +199,11 @@ public class TaxonCharacterMatrix {
     private String resolveFullCharacterName(String shortCharName,
             TreeNode<Structure> structNode) {
         String structName = structNode.getElement().getName();
+        if (structName.equals("chrome")){
+        	int i=0;
+        	i++;
+        }
+        	
         //Hong added constraint attribute to structre name
         String constraint = structNode.getElement().getConstraint();
         String constraintType = structNode.getElement().getConstraintType();

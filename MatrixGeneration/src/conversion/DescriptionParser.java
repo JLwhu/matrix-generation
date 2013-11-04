@@ -94,19 +94,24 @@ public class DescriptionParser {
 				String path = inputPath+filename;//props.getProperty("input.path") + filename;
 				Treatment treatment = (Treatment) unmarshaller
 						.unmarshal(new File(path));
-				Description description = treatment.getDescription();
-				if (description != null) {
-					List<Statement> statementList = description.getStatement();
-					buildStructureTree(taxon, statementList);
-					for (Statement statement : statementList) {
-						taxon.addStatementTextEntry(statement.getId(),
-								statement.getText());
+				//	Description description = treatment.getDescription();
+				List<Description> descriptions = treatment.getDescription();	  //by Jing Liu Nov. 4, 2013  deal with multiple descriptions
+				for (int i = 0; i < descriptions.size(); i++) {
+					Description description = descriptions.get(i);
+					if (description != null) {
+						List<Statement> statementList = description
+								.getStatement();
+						buildStructureTree(taxon, statementList);
+						for (Statement statement : statementList) {
+							taxon.addStatementTextEntry(statement.getId(),
+									statement.getText());
+						}
+						taxon.normalizeAllNames(); // sigPluMap //by Jing Liu
+													// Oct. 31, 2013
+					} else {
+					//	return null;
 					}
-					taxon.normalizeAllNames();    //sigPluMap  //by Jing Liu Oct. 31, 2013
-				}else{
-					return null;
 				}
-
 			}
 		} catch(Exception e) {   //JAXBException
 			e.printStackTrace();
@@ -128,23 +133,28 @@ public class DescriptionParser {
 				String path = inputPath + filename;// props.getProperty("input.path") + filename;
 				Treatment treatment = (Treatment) unmarshaller
 						.unmarshal(new File(path));
-				Description description = treatment.getDescription();
-				if (description != null) {
-					List<Statement> statementList = description.getStatement();
-					if (statementList.size() != 0) {
-						buildStructureTree(taxon, statementList);
-						for (Statement statement : statementList) {
-							taxon.addStatementTextEntry(statement.getId(),
-									statement.getText());
-						}
-						taxon.normalizeAllNames();   //sigPluMap  //by Jing Liu Oct. 31, 2013
-					} //else {
-					//	return null;
-				//	}
-			//	}else{
-			//		return null;
+			//	Description description = treatment.getDescription();
+				List<Description> descriptions = treatment.getDescription();	  //by Jing Liu Nov. 4, 2013  deal with multiple descriptions
+				for (int i=0;i<descriptions.size();i++){ 
+					Description description = descriptions.get(i);
+					if (description != null) {
+						List<Statement> statementList = description
+								.getStatement();
+						if (statementList.size() != 0) {
+							buildStructureTree(taxon, statementList);
+							for (Statement statement : statementList) {
+								taxon.addStatementTextEntry(statement.getId(),
+										statement.getText());
+							}
+							taxon.normalizeAllNames(); // sigPluMap //by Jing
+														// Liu Oct. 31, 2013
+						} // else {
+							// return null;
+						// }
+						// }else{
+						// return null;
+					}
 				}
-
 			}
 		} catch(Exception e) {  //JAXBException
 			e.printStackTrace();
@@ -219,7 +229,20 @@ public class DescriptionParser {
 		List<annotationSchema.jaxb.Character> characters = structure.getCharacter();
 		for(annotationSchema.jaxb.Character c : characters) {
 			IState state = StateFactory.getStateObject(c);
-			structure.addMapping(c.getName(), state);
+			String shortCharacterName = c.getName();
+			 //added by Jing Liu Nov.4, 2013 add constraint attribute to character name
+	        String constraint = c.getConstraint();
+	        List<Object> constraintId = c.getConstraintid();
+
+	        if (constraintId != null && constraintId.size()>0) {
+	        	shortCharacterName = ((Structure)constraintId.get(0)).getName() + "_" + shortCharacterName;
+	        }else  if (constraint != null) {
+	        	shortCharacterName = constraint + "_" + shortCharacterName;
+	        }
+	        structure.addMapping(shortCharacterName, state);	
+	        //end Jing Liu Nov.4, 2013
+			
+		//	structure.addMapping(c.getName(), state);	 //annotated by Jing Liu Nov.4, 2013 add constraint attribute to character name		 
 			String modifier = c.getModifier();
 			if(modifier != null)
 				structure.addModifierToCharName(c.getName(), modifier);

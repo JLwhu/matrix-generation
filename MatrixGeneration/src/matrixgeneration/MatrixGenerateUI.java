@@ -395,7 +395,7 @@ public class MatrixGenerateUI extends javax.swing.JFrame {
             try {
                 File file = inputDirectoryChooser.getSelectedFile();
                 // What to do with the file, e.g. display it in a TextArea
-                inputDirPath = file.getAbsolutePath() + "\\";
+                inputDirPath = file.getAbsolutePath() + "/";
                 inputDirTextField.setText(inputDirPath);
 
                 FileName2TaxonLoader filename2Taxonloader;

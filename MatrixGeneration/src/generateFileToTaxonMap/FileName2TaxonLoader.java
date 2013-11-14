@@ -4,6 +4,7 @@
 package generateFileToTaxonMap;
 
 import java.io.File;
+import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Hashtable;
@@ -101,8 +102,10 @@ public abstract class FileName2TaxonLoader extends ProcessSubject{
 
     //added by Jing Liu
     // used when the file names are not integer
-    protected void populateFilename2TaxonTable_AlphebeticNames() {
-        File[] xmls = (new File(this.inputfilepath)).listFiles();
+    protected void populateFilename2TaxonTable_AlphebeticNames() throws UnsupportedEncodingException {
+    	System.out.println(this.inputfilepath);
+    	String dirpath = new String(this.inputfilepath.getBytes(),"UTF-8");
+        File[] xmls = (new File(dirpath)).listFiles();
         int[] filenames = new int[xmls.length];
 
         int i = 0;
@@ -112,7 +115,7 @@ public abstract class FileName2TaxonLoader extends ProcessSubject{
             setCurrentPercentage(Math.round(i*100/xmls.length));
             setCurrentMessage(xml.getName());
             System.out.println(xml.getName());
-            populateFilename2TaxonTableUsing(new File(this.inputfilepath, xml.getName()));
+            populateFilename2TaxonTableUsing(new File(dirpath, xml.getName()));
         }
 
     }

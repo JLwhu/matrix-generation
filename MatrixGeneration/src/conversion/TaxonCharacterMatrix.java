@@ -42,6 +42,7 @@ public class TaxonCharacterMatrix {
         this.hierarchy = th;
         this.table = createTable();
         expandTable();
+        combineIdenticalFromToColumnsInTable();
     }
 
     /**
@@ -500,6 +501,58 @@ public class TaxonCharacterMatrix {
         for (String ch : charsToRemove) {
             table.remove(ch);
         }
+    }
+    
+    
+    private void combineIdenticalFromToColumnsInTable() {
+    	System.out.println("combining");
+    	List<String> charsToRemove = new ArrayList<String>();
+    	 
+    	for (String charName : table.keySet()) {
+			if (charName.endsWith(FROM_SUFFIX)) {
+				System.out.println(charName);
+				String charToName = charName.substring(0,charName.indexOf(FROM_SUFFIX)) + TO_SUFFIX;
+				Boolean isIdentical = true;
+				
+				// map of taxon -> states for this character
+				Map<ITaxon, List<IState>> taxonToStatesFrom = this.table
+						.get(charName);
+				Map<ITaxon, List<IState>> taxonToStatesTo = this.table
+						.get(charToName);
+				System.out.println(charToName);
+				for (ITaxon taxon : taxonToStatesFrom.keySet()) {
+					List<IState> stateListFrom = taxonToStatesFrom.get(taxon);
+					List<IState> stateListTo = taxonToStatesTo.get(taxon);
+		                for (IState state : stateListFrom) {
+	                	if (!stateListTo.contains(state)){
+	                		isIdentical = false;
+	                		break;
+	                	}	                	
+	                }
+	                for (IState state : stateListTo) {
+	                	if (!stateListFrom.contains(state)){
+	                		isIdentical = false;
+	                		break;
+	                	}	                	
+	                }
+	                if (!isIdentical)
+	                	break;
+				}
+				
+				if (isIdentical){
+					charsToRemove.add(charName);
+				}
+			}
+    	}
+    	
+		for (String ch : charsToRemove) {
+			String newCharName = ch.substring(0,ch.indexOf(FROM_SUFFIX));
+			String charToName = newCharName + TO_SUFFIX;
+			table.remove(charToName);
+			table.put(newCharName, table.get(ch));
+			table.remove(ch);
+		}
+    	
     }
 
     /**

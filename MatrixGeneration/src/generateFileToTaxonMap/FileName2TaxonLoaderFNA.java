@@ -75,6 +75,28 @@ public class FileName2TaxonLoaderFNA extends FileName2TaxonLoader {
             LOGGER.error(sw.toString());
         }
     }
+    
+   /*static {
+        try {
+            familypath = XPath.newInstance("//taxon_identification[@status='ACCEPTED']/family_name");
+            subfamilypath = XPath.newInstance("//taxon_identification[@status='ACCEPTED']/subfamily_name");
+            tribepath = XPath.newInstance("//taxon_identification[@status='ACCEPTED']/tribe_name");
+            subtribepath = XPath.newInstance("//taxon_identification[@status='ACCEPTED']/subtribe_name");
+            genuspath = XPath.newInstance("//taxon_identification[@status='ACCEPTED']/genus_name");
+            subgenuspath = XPath.newInstance("//taxon_identification[@status='ACCEPTED']/subgenus_name");
+            sectionpath = XPath.newInstance("//taxon_identification[@status='ACCEPTED']/section_name");
+            subsectionpath = XPath.newInstance("//taxon_identification[@status='ACCEPTED']/subsection_name");
+            speciespath = XPath.newInstance("//taxon_identification[@status='ACCEPTED']/species_name");
+            subspeciespath = XPath.newInstance("//taxon_identification[@status='ACCEPTED']/subspecies_name");
+            varietypath = XPath.newInstance("//taxon_identification[@status='ACCEPTED']/variety_name");
+            descriptionpath = XPath.newInstance("//description");
+        } catch (Exception e) {
+            StringWriter sw = new StringWriter();
+            PrintWriter pw = new PrintWriter(sw);
+            e.printStackTrace(pw);
+            LOGGER.error(sw.toString());
+        }
+    }*/
 
     /**
      *

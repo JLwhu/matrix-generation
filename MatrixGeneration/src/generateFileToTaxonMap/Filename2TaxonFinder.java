@@ -714,6 +714,25 @@ public class Filename2TaxonFinder{
         String rank = taxonRank.get(index);
         return rank;
     }
+    
+    
+    public String getNonEmptyHigestRank() {
+        List<String> ranklist = getNonEmptyRankList();
+        String rank;
+        if (ranklist.size() > 0) {
+            return ranklist.get(0);
+        }else
+        	return null;
+    }
+    
+    public String getNonEmptyLowestRank() {
+        List<String> ranklist = getNonEmptyRankList();
+        String rank;
+        if (ranklist.size() > 0) {
+            return ranklist.get(ranklist.size()-1);
+        }else
+        	return null;
+    }
 
     /**
      * Gets the the lowest rank that is not empty in the current table.

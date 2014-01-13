@@ -68,8 +68,12 @@ public class TaxonHierarchy {
       //          if (exist_taxon == null) {
                     parent.addChild(new TreeNode<ITaxon>(sub));
       //          }
+            }else {
+            	parent = this.hierarchy.getRoot();
+            	if (parent.getElement().getName().equals("PseudoROOT"))
+            		parent.addChild(new TreeNode<ITaxon>(sub));
+            		
             }
-            //	else
             //		throw new SubTaxonException(sub, parent.getElement());
         }
 

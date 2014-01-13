@@ -75,8 +75,8 @@ public class MatrixGeneration extends ProcessSubject {
     public TaxonHierarchy makeHierarchyMultipleLevelsLoop_peudoRoot() throws Exception {
         System.out.println("Making hierarchy for : PeudoRoot ");
         String rootName = "PseudoROOT";
-        String existTopRank = filenameTaxon.getHigestRank();
-        String existBottomRank = filenameTaxon.getLowestRank();
+        String existTopRank = filenameTaxon.getNonEmptyHigestRank();//getHigestRank();
+        String existBottomRank = filenameTaxon.getNonEmptyLowestRank();//getLowestRank();
         TaxonRankCalculator trc = new TaxonRankCalculator();
         TaxonRank topRank = trc.getParentRank(TaxonRank.valueOf(existTopRank.toUpperCase()));        
    //     setCurrentMessage("pesudoroot1");

@@ -2,12 +2,12 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
-	<classpathentry kind="lib" path="C:/Users/jingliu5/UFLwork/eclispe/SDKworkspace/MatrixGeneration/lib/jaxen-core.jar"/>
-	<classpathentry kind="lib" path="C:/Users/jingliu5/UFLwork/eclispe/SDKworkspace/MatrixGeneration/lib/jaxen-jdom.jar"/>
-	<classpathentry kind="lib" path="C:/Users/jingliu5/UFLwork/eclispe/SDKworkspace/MatrixGeneration/lib/jdom.jar"/>
-	<classpathentry kind="lib" path="C:/Users/jingliu5/UFLwork/eclispe/SDKworkspace/MatrixGeneration/lib/jena-2.6.4.jar"/>
-	<classpathentry kind="lib" path="C:/Users/jingliu5/UFLwork/eclispe/SDKworkspace/MatrixGeneration/lib/junit-4.5.jar"/>
-	<classpathentry kind="lib" path="C:/Users/jingliu5/UFLwork/eclispe/SDKworkspace/MatrixGeneration/lib/log4j-1.2.15.jar"/>
-	<classpathentry kind="lib" path="C:/Users/jingliu5/UFLwork/eclispe/SDKworkspace/MatrixGeneration/lib/saxpath.jar"/>
+	<classpathentry kind="lib" path="/Users/Tao_Jiang/Documents/Jing/workspace/MatrixGeneration/lib/jaxen-core.jar"/>
+	<classpathentry kind="lib" path="/Users/Tao_Jiang/Documents/Jing/workspace/MatrixGeneration/lib/jaxen-jdom.jar"/>
+	<classpathentry kind="lib" path="/Users/Tao_Jiang/Documents/Jing/workspace/MatrixGeneration/lib/jdom.jar"/>
+	<classpathentry kind="lib" path="/Users/Tao_Jiang/Documents/Jing/workspace/MatrixGeneration/lib/jena-2.6.4.jar"/>
+	<classpathentry kind="lib" path="/Users/Tao_Jiang/Documents/Jing/workspace/MatrixGeneration/lib/junit-4.5.jar"/>
+	<classpathentry kind="lib" path="/Users/Tao_Jiang/Documents/Jing/workspace/MatrixGeneration/lib/log4j-1.2.15.jar"/>
+	<classpathentry kind="lib" path="/Users/Tao_Jiang/Documents/Jing/workspace/MatrixGeneration/lib/saxpath.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

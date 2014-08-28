@@ -135,7 +135,7 @@ public class DescriptionParser {
 						.unmarshal(new File(path));
 			//	Description description = treatment.getDescription();
 				List<Description> descriptions = treatment.getDescription();	  //by Jing Liu Nov. 4, 2013  deal with multiple descriptions
-				for (int i=0;i<descriptions.size();i++){ 
+				for (int i=0;i<descriptions.size();i++){   //descriptions.size()
 					Description description = descriptions.get(i);
 					if (description != null) {
 						List<Statement> statementList = description
